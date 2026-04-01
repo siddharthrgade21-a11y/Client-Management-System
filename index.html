@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-page">
+    <div class="login-box">
+        <h2>Client Management System</h2>
+
+        <input id="loginUser" placeholder="Username">
+        <input id="loginPass" type="password" placeholder="Password">
+
+        <button onclick="loginUser()">Login</button>
+
+        <p>Don't have an account?</p>
+        <button class="secondary" onclick="showSignup()">Create Account</button>
+    </div>
+</div>
+
+<!-- SIGNUP PAGE -->
+<div id="signupPage" class="login-page hidden">
+    <div class="login-box">
+        <h2>Create New Account</h2>
+
+        <input id="newUser" placeholder="Create Username">
+        <input id="newPass" type="password" placeholder="Create Password">
+
+        <button onclick="createAccount()">Create Account</button>
+
+        <p>Already have an account?</p>
+        <button class="secondary" onclick="showLogin()">Login Here</button>
+    </div>
+</div>
+
+<!-- MAIN DASHBOARD -->
+<div id="mainApp" class="hidden">
+
+<div class="sidebar">
+    <h2>CMS PRO</h2>
+
+    <ul>
+        <li onclick="showSection('dashboard')">🏠 Dashboard</li>
+        <li onclick="showSection('clients')">👤 Clients</li>
+        <li onclick="showSection('projects')">📁 Projects</li>
+        <li onclick="showSection('payments')">💰 Payments</li>
+        <li onclick="showSection('reports')">📊 Reports</li>
+    </ul>
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+        <h1>Business Dashboard</h1>
+        <button onclick="toggleDarkMode()">🌙 Dark Mode</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="section">
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Clients</h3>
+                <p id="totalClients">0</p>
+            </div>
+            <div class="card">
+                <h3>Active Projects</h3>
+                <p id="totalProjects">0</p>
+            </div>
+            <div class="card">
+                <h3>Total Revenue</h3>
+                <p id="totalRevenue">₹0</p>
+            </div>
+            <div class="card">
+                <h3>Pending Payments</h3>
+                <p id="pendingPayments">₹0</p>
+            </div>
+        </div>
+
+        <canvas id="revenueChart"></canvas>
+
+    </div>
+
+    <!-- CLIENTS -->
+    <div id="clients" class="section hidden">
+        <h2>👤 Add Client</h2>
+
+        <input id="clientName" placeholder="Client Name">
+        <input id="clientEmail" placeholder="Client Email">
+        <input id="clientPhone" placeholder="Client Phone">
+
+        <button onclick="addClient()">➕ Add Client</button>
+
+        <h2>📋 Client List</h2>
+        <ul id="clientList"></ul>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="projects" class="section hidden">
+        <h2>📁 Add Project</h2>
+
+        <input id="projectName" placeholder="Project Name">
+        <input id="projectClient" placeholder="Client Name">
+        <input id="projectBudget" placeholder="Budget">
+
+        <button onclick="addProject()">➕ Add Project</button>
+
+        <h2>📂 Project List</h2>
+        <ul id="projectList"></ul>
+    </div>
+
+    <!-- PAYMENTS -->
+    <div id="payments" class="section hidden">
+        <h2>💰 Add Payment</h2>
+
+        <input id="paymentClient" placeholder="Client Name">
+        <input id="paymentAmount" placeholder="Amount">
+
+        <button onclick="addPayment()">➕ Add Payment</button>
+
+        <h2>🧾 Payment History</h2>
+        <ul id="paymentList"></ul>
+    </div>
+
+    <!-- REPORTS -->
+    <div id="reports" class="section hidden">
+        <h2>📊 Business Reports</h2>
+        <p>Total Clients: <span id="reportClients">0</span></p>
+        <p>Total Projects: <span id="reportProjects">0</span></p>
+        <p>Total Revenue: ₹<span id="reportRevenue">0</span></p>
+    </div>
+
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
